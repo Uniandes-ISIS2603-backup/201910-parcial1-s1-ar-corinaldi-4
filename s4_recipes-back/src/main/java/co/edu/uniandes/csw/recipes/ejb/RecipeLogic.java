@@ -6,6 +6,7 @@
 package co.edu.uniandes.csw.recipes.ejb;
 
 import co.edu.uniandes.csw.recipes.entities.RecipeEntity;
+import co.edu.uniandes.csw.recipes.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.recipes.persistence.RecipePersistence;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -16,6 +17,7 @@ import javax.inject.Inject;
  */
 @Stateless
 public class RecipeLogic {
+
     @Inject
     private RecipePersistence persistence; // Variable para acceder a la persistencia de la aplicación. Es una inyección de dependencias.
 
@@ -23,7 +25,16 @@ public class RecipeLogic {
         return persistence.find(id);
     }
 
-    //TODO crear el método createRecipe
-
-
+    public RecipeEntity createRecipe(RecipeEntity recipe) throws BusinessLogicException {
+        RecipeEntity re = persistence.create(recipe);
+        if (re.getName().length() > 30 && re.getName().equals("") && re.getName() == null) {
+            throw new BusinessLogicException("El nombre no es valido");
+        }
+        if (re.getDescription().length() > 150 && re.getDescription().equals("") && re.getDescription() == null) {
+            throw new BusinessLogicException("La descripcion no es valida");
+        }
+        return re;
+    }
+    
+    
 }

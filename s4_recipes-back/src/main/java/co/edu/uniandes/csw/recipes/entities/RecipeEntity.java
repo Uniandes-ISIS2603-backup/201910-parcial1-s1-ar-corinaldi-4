@@ -5,6 +5,7 @@
  */
 package co.edu.uniandes.csw.recipes.entities;
 
+import java.util.ArrayList;
 import javax.persistence.Entity;
 
 /**
@@ -45,6 +46,10 @@ public class RecipeEntity extends BaseEntity {
      */
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public void setBooks(ArrayList<Object> arrayList) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     
