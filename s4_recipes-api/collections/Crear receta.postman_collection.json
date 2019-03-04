@@ -1,0 +1,53 @@
+{
+	"info": {
+		"_postman_id": "81b7dc3d-dc75-4eae-9509-e933d74986ba",
+		"name": "Crear receta",
+		"description": "Crea la receta",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "localhost:8080/s4_recipes-api/api/recipes",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "49ba4087-bd8b-457a-b7bd-c47fc54faba6",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Tacos de res\",\r\n    \"description\": \"Receta para cocinar tacos típicos con un fuerte sabor picante\"\r\n}"
+				},
+				"url": {
+					"raw": "localhost:8080/s4_recipes-api/api/recipes",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"s4_recipes-api",
+						"api",
+						"recipes"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
