@@ -6,6 +6,7 @@
 package co.edu.uniandes.csw.recipes.persistence;
 
 import co.edu.uniandes.csw.recipes.entities.RecipeEntity;
+import co.edu.uniandes.csw.recipes.exceptions.BusinessLogicException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -32,9 +33,20 @@ public class RecipePersistence {
     }
     
     //TODO método crear de recipe
-    public RecipeEntity create(RecipeEntity recipeEntity) {
-        em.persist(recipeEntity);
-        return recipeEntity;
+    public RecipeEntity create(RecipeEntity re) throws BusinessLogicException {
+       if (re.getName().length() > 30 && re.getName().equals("") && re.getName() == null) {
+            throw new BusinessLogicException("El nombre no es valido");
+        }
+        if (re.getDescription().length() > 150 && re.getDescription().equals("") && re.getDescription() == null) {
+            throw new BusinessLogicException("La descripcion no es valida");
+        }
+        if (re.getIngredients() == null && re.getIngredients().size() == 0) {
+            throw new BusinessLogicException("debe tener al menos un ingrediente");
+        }
+        
+        em.persist(re);
+        
+        return re;
     }
 
 }
