@@ -33,8 +33,10 @@ public class RecipeLogic {
         if (re.getDescription().length() > 150 && re.getDescription().equals("") && re.getDescription() == null) {
             throw new BusinessLogicException("La descripcion no es valida");
         }
+        if (re.getIngredients() == null && re.getIngredients().size() == 0) {
+            throw new BusinessLogicException("debe tener al menos un ingrediente");
+        }
         return re;
     }
-    
-    
+
 }
